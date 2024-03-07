@@ -1,0 +1,64 @@
+* {
+    font-family: 'Roboto Mono';
+    color: #FAF0E6;
+    text-transform: uppercase;
+}
+
+body {
+    background-color: #352F44;
+}
+
+header {
+    padding-left: 5%;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gamed {
+    width: 500px;
+    padding-bottom: 20px;
+}
+
+.painline {
+    display: inline;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.scored {
+    text-align: right;
+}
+
+.footerd {
+
+}
+
+.howtod {
+    text-align: justify;
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+
+li {
+    margin-bottom: 10px;
+}
+
+canvas{
+    background: #FAF0E6;
+    display: block;
+    margin: 0 auto;
+    border-color: black;
+}
+
+
+

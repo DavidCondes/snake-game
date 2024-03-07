@@ -3,7 +3,7 @@ document.addEventListener("keydown", keyDownHandler, false);
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-const interval = setInterval(draw, 50);
+const interval = setInterval(gameEngine, 50);
 
 
 const snakeHeight = 10;
@@ -45,6 +45,8 @@ let food = {
 
 let score = 0;
 
+let moveLock = false;
+
 function moveSnake(){
     const l = snake.parts.length;
 
@@ -76,6 +78,8 @@ function moveSnake(){
         }
 
     }
+
+    moveLock = false;
 
 }
 
@@ -146,15 +150,15 @@ function updateScore(){
     document.getElementById('score').innerHTML = score;
 }
 
-function draw(){
+function gameEngine(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     
     moveSnake();
     drawSnake();
-    drawFood();
     snakeEat();
-
+    drawFood();snakeEat();
+    
     if(snakeCollition()){
         alert("GAME OVER");
         document.location.reload();
@@ -166,16 +170,20 @@ function keyDownHandler(e){
     const dir = snake.parts[0].d;
 
     if((e.key === "ArrowRight" || e.key === "ArrowLeft") &&
-       (dir == directions.Up || dir == directions.Down)){
+       (dir == directions.Up || dir == directions.Down) && !moveLock){
 
         if(e.key === "ArrowRight") {snake.parts[0].d = directions.Right;}
         if(e.key === "ArrowLeft") {snake.parts[0].d = directions.Left;}
+        
+        moveLock = true;
 
     } else if((e.key === "ArrowUp" || e.key === "ArrowDown") &&
-              (dir == directions.Right || dir == directions.Left)){
+              (dir == directions.Right || dir == directions.Left) && !moveLock){
 
         if(e.key === "ArrowUp") {snake.parts[0].d = directions.Up;}
         if(e.key === "ArrowDown") {snake.parts[0].d = directions.Down;}
+
+        moveLock = true;
 
     }
     
