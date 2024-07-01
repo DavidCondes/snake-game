@@ -161,8 +161,8 @@ function gameEngine(){
     
     if(snakeCollition()){
         alert("GAME OVER");
-        document.location.reload();
         clearInterval(interval);
+        document.location.reload();
     }
 }
 
